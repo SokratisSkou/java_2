@@ -1,4 +1,3 @@
-
 package orghua.recipes;
 
 import java.io.IOException;
@@ -79,27 +78,7 @@ public class Recipe implements Iterable<Step> {
     }
 
     // Load Recipe from File 
-    public static Recipe loadFromFile(String filename) throws IOException {
-        List<String> lines = Files.readAllLines(Paths.get(filename));
-        Recipe recipe = new Recipe(filename);
-        
-        Step currentStep = new Step();
-        for (String line : lines) {
-            if (line.trim().isEmpty()) {
-                if (!currentStep.isEmpty()) {
-                    recipe.addStep(currentStep);
-                    currentStep = new Step();
-                }
-            } else {
-                currentStep.parseLine(line);
-            }
-        }
-        
-        if (!currentStep.isEmpty()) {
-            recipe.addStep(currentStep);
-        }
-        return recipe;
-    }
+   
 
     // Print Recipe
     public void printRecipe() {
